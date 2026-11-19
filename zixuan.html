@@ -1,3 +1,7 @@
+
+index.html
+
+100%
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -2304,6 +2308,7 @@
       seed.home.quickNotes = [];
       seed.today.mitList = [];
       seed.today.scheduleItems = [];
+      seed.today.historyByDate = {};
       seed.work.tasks = [];
       seed.work.notes = [];
       seed.study.todayFocusMins = 0;
@@ -2311,16 +2316,18 @@
       seed.study.deadlines = [];
       seed.fitness.workoutLogs = [];
       seed.fitness.weightLogs = [];
+      seed.fitness.calendarPlan = {};
       seed.diet.waterCups = 0;
+      seed.diet.waterByDate = {};
       seed.diet.meals = [];
       seed.gaming.items = [];
       return seed;
     }
 
-    var AppState = getSeedData();
+    var AppState = getEmptyData();
 
     function normalizeState(raw) {
-      var fallback = getSeedData();
+      var fallback = getEmptyData();
       if (!raw || typeof raw !== 'object') return fallback;
       return {
         meta: raw.meta || fallback.meta,
@@ -2436,7 +2443,7 @@
           return;
         } catch (e) {}
       }
-      AppState = getSeedData();
+      AppState = getEmptyData();
       saveStateToStorage(false);
     }
 
@@ -4870,3 +4877,4 @@
   </script>
 </body>
 </html>
+目前顯示的是「index.html」。
